@@ -56,5 +56,18 @@
         <input type="submit" value="Submit">
     </form>
 
+    {% for p in points %}
+    <p>{{p}}</p>
+    {% endfor %}
+
+    {% if name %}
+    <p>Matched Item: {{item}}</p>
+    <p>Name: {{ name }}</p>
+    <p>location: {{ loc }}</p>
+    <p>Date: {{date}}</p>
+    <p>des: {{des}}</p>
+    {% endif %}
+    
+
 </body>
 </html>
