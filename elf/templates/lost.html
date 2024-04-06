@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Form</title>
+</head>
+<body>
+    <h2>Lost Form</h2>
+
+    <!-- <form action="{% url 'lost' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ lost_form.as_p }}
+        
+        {% if lost_form.errors %}
+        <div class="errors">
+            <ul>
+                {% for field, error_list in lost_form.errors.items %}
+                {% for error in error_list %}
+                <li>{{ error }}</li>
+                {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <input type="submit" value="Submit">
+    </form> -->
+
+    <form action="{% url 'lost' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="lost_name">Name:</label><br>
+        <input type="text" id="lost_name" name="name" required><br>
+
+        <label for="lost_enrollment_no">Enrollment No:</label><br>
+        <input type="text" id="lost_enrollment_no" name="enrollment_no" required><br>
+
+        <label for="lost_phone_no">Phone No:</label><br>
+        <input type="tel" id="lost_phone_no" name="phone_no" pattern="[0-9]{10}" required><br>
+
+        <label for="lost_item_name">Item Name:</label><br>
+        <input type="text" id="lost_item_name" name="item_name" required><br>
+
+        <label for="lost_item_description">Item Description:</label><br>
+        <textarea id="lost_item_description" name="item_description" rows="4" cols="50" required></textarea><br>
+
+        <label for="lost_item_image">Item Image:</label><br>
+        <input type="file" id="lost_item_image" name="image" accept="image/*" required><br>
+
+        <label for="lost_location">Location:</label><br>
+        <input type="text" id="lost_location" name="location" required><br>
+
+        <label for="lost_date">Date:</label><br>
+        <input type="date" id="lost_date" name="date" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
