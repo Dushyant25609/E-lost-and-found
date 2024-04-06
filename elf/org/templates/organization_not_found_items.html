@@ -1,8 +1,46 @@
 <!-- organization_not_found_items.html -->
 {% load static %}
-<h2>Items Not Yet Found (Lost)</h2>
-<ul>
-{% for item in not_found_items %}
-    <li><img src="{{ item.imageURL }}" alt=""></li>
-{% endfor %}
-</ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Not Found Items</title>
+</head>
+<body>
+    <h2>Items Not Yet Found (Lost)</h2>
+    
+    <!-- Search form -->
+    <form action="{% url 'not_found_items' %}" method="GET">
+        <input type="text" name="query" placeholder="Search for items..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+    {% if not_found_items %}
+        {% for item in not_found_items %}
+            <li>
+                {% if item.imageURL %}
+                    <img src="{{ item.imageURL }}" alt="">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <p>Name: {{ item.name }}</p>
+                <p>Enrollment No: {{ item.enrollment_no }}</p>
+                <p>Phone No: {{ item.phone_no }}</p>
+                <p>Item Name: {{ item.item_name }}</p>
+                <p>Item Description: {{ item.item_description }}</p>
+                <p>Location: {{ item.location }}</p>
+                <p>Date: {{ item.date }}</p>
+                <form action="{% url 'toggle_status' item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="new_status" value="{% if item.status == 'received' %}not_received{% else %}received{% endif %}">
+                    <button type="submit">Toggle Status</button>
+                </form>
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>No items found.</p>
+    {% endif %}
+    </ul>
+</body>
+</html>

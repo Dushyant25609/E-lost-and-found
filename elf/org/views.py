@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from student.forms import FoundItemForm
+from django.shortcuts import get_object_or_404, redirect
 
 # Create your views here.
 
@@ -32,6 +33,29 @@ def not_received_items(request):
     return render(request, 'organization_not_received_items.html', {'not_received_items': not_received_items})
 
 def not_found_items(request):
-    # Query items that are not found
-    not_found_items = Lost_Item.objects.filter(status='not_recieved')  # Assuming 'not_submitted' means not found
-    return render(request, 'organization_not_found_items.html', {'not_found_items': not_found_items})
+    query = request.GET.get('query')
+    if query:
+        not_found_items = Lost_Item.objects.filter(item_name__icontains=query) | Lost_Item.objects.filter(item_description__icontains=query)
+    else:
+        not_found_items = Lost_Item.objects.all()
+    return render(request, 'organization_not_found_items.html', {'not_found_items': not_found_items, 'query': query})
+
+
+def toggle_status(request, lost_item_id):
+    lost_item = get_object_or_404(Lost_Item, pk=lost_item_id)
+    if request.method == 'POST':
+        new_status = request.POST.get('new_status')
+        lost_item.status = new_status
+        lost_item.save()
+    return redirect('not_found_items')
+
+
+
+def search_items(request):
+    query = request.GET.get('query')
+    if query:
+        # Perform a case-insensitive search on item_name and item_description fields
+        found_items = Lost_Item.objects.filter(item_name__icontains=query) | Lost_Item.objects.filter(item_description__icontains=query)
+    else:
+        found_items = Lost_Item.objects.all()  # Show all items if no query provided
+    return render(request, 'organization_not_found_items.html', {'found_items': found_items})
