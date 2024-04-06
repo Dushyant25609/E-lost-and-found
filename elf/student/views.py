@@ -9,7 +9,7 @@ from .score import score_calculator
 
 def home(request):
     context = {}
-    return render(request, 'home.html', context)
+    return render(request, 'index.html', context)
 
 def max_index(points):
     max_num = 0
@@ -105,3 +105,5 @@ def found(request):
     context = {'found_form': found_form,}
     return render(request, 'found.html', context)
 
+def about(request):
+    return render(request, 'aboutUs.html')

@@ -246,3 +246,22 @@ header img {
         width: calc(100% - 40px); /* Increase the width of the feature div */
     }
 }
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section p {
+    text-align: center;
+}

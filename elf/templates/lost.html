@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/static/css/lost.css' %}">
 </head>
 <body>
     <h2>Lost Form</h2>
@@ -55,19 +57,6 @@
 
         <input type="submit" value="Submit">
     </form>
-
-    {% for p in points %}
-    <p>{{p}}</p>
-    {% endfor %}
-
-    {% if name %}
-    <p>Matched Item: {{item}}</p>
-    <p>Name: {{ name }}</p>
-    <p>location: {{ loc }}</p>
-    <p>Date: {{date}}</p>
-    <p>des: {{des}}</p>
-    {% endif %}
-    
 
 </body>
 </html>

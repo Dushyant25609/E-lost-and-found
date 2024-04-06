@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+header {
+    background-color: #232323; /* Change background color to #232323 */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Adjusted padding */
+    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+    box-shadow: 0 0 19px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow with blur */
+    font-family: "Open Sans", sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px; /* Reduced margin */
+    transition: transform 0.3s, background-color 0.3s; /* Transition effect */
+}
+
+nav ul li a {
+    color: #2059D4; /* Text color */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px; /* Adjusted font size */
+    padding: 8px 16px; /* Adjusted padding */
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    transform: translateY(-2px); /* Move the link up slightly */
+    background-color: #cecccc; /* Darker shade of highlight color */
+}
+
+.menu-icon {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    header nav ul {
+        display: none; /* Hide the menu by default */
+        flex-direction: column; /* Stack menu items vertically */
+        position: absolute;
+        top: 60px; /* Adjust top position to match header height */
+        left: 0;
+        background-color: #232323; /* Background color */
+        width: 100%;
+    }
+
+    header nav ul.open {
+        display: flex; /* Display the menu when open */
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0; /* Adjust margin */
+    }
+
+    .menu-icon {
+        display: block; /* Display the menu icon */
+    }
+}
+
+/* Add this transition for smooth animation */
+header nav ul {
+    transition: all 0.3s ease;
+}
