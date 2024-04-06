@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LostSpot - Home</title>
+    <link rel="stylesheet" href="../static/home.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header>
+        <img src="../static/logo.jpeg" alt="Logo Lost Spot"/>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+            <div class="menu-icon">
+                <img src="../static/menu-icon.png" alt="Menu">
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1><span class="lost">Lost</span><span class="spot">Spot</span></h1>
+            <p>Enhancing lost and found</p>
+            <br><br>
+            <a href="#report" class="btn">Report Lost Item</a>
+            <a href="#submit" class="btn2">Submit Found Item</a>
+        </section>
+        <!-- <section class="features">
+            <h3>Key Features</h3>
+            <ul>
+                <li>AI-powered item identification</li>
+                <li>Streamlined submission process</li>
+                <li>Automatic matching and notification</li>
+                
+            </ul>
+        </section> -->
+    </main>
+    <footer>
+        <p>&copy; 2024 LostSpot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navList = document.querySelector('header nav ul');
+
+    menuIcon.addEventListener('click', function() {
+        navList.classList.toggle('open');
+    });
+});
+
+    </script>
+</body>
+</html>
