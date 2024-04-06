@@ -24,6 +24,14 @@ class Found_Item(models.Model):
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_submitted')
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 
 class Lost_Item(models.Model):
     status = {
@@ -39,6 +47,14 @@ class Lost_Item(models.Model):
     location = models.TextField(max_length=100)
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_recieved')
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
 
 

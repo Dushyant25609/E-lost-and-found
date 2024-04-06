@@ -1,0 +1,8 @@
+<!-- organization_not_received_items.html -->
+
+<h2>Items Not Yet Received by Owners</h2>
+<ul>
+{% for item in not_received_items %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
