@@ -10,4 +10,5 @@ urlpatterns = [
     path('search/', views.search_items, name='search_items'),
     path('mark-as-complete/', views.mark_as_complete, name='mark_as_complete'),
     path('completed/', views.completed_items, name='completed_items'),
+    path('user_home', views.logged_in, name='user_home'),
 ]

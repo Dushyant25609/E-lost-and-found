@@ -6,6 +6,7 @@
     <title>Lost Items Listings</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/static/css/list.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Lost Items Listings</h1>
@@ -74,6 +75,7 @@
         
     </script>
     <script>
+        // No need for the toggle_status function as it's not being used
         $(document).ready(function() {
             $(".complete-btn").on("click", function() {
                 var itemId = $(this).data("item-id");
@@ -103,6 +105,7 @@
             });
         });
     </script>
+    
     
 </body>
 </html>

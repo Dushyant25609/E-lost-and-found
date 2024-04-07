@@ -143,5 +143,6 @@ def student_dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
-def logged_in(request):
-    return render(request, 'logged_home.html')
+
+def slogged_in(request):
+    return render(request, 'slogged.html')

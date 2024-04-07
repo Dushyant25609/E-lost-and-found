@@ -74,3 +74,5 @@ def completed_items(request):
     return render(request, 'listFound.html', {'completed_items': completed_items})
 
 
+def logged_in(request):
+    return render(request, 'logged_home.html')

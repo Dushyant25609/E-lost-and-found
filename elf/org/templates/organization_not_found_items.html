@@ -70,38 +70,44 @@
             }
         }
 
-        
-    </script>
-    <script>
-        $(document).ready(function() {
-            $(".complete-btn").on("click", function() {
-                var itemId = $(this).data("item-id");
-                console.log("Item ID:", itemId); // Add console log to check itemId
-                $.ajax({
-                    url: "{% url 'mark_as_complete' %}",
-                    type: "POST",
-                    data: {
-                        item_id: itemId,
-                        csrfmiddlewaretoken: "{{ csrf_token }}"
-                    },
-                    success: function(response) {
-                        console.log("Response:", response); // Add console log to check response
-                        if (response.success) {
-                            // Remove the item from the DOM
-                            $("li[data-item-id='" + itemId + "']").remove();
-                            window.location.reload(true);
-                        } else {
-                            alert("Failed to mark item as complete.");
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        alert("Error occurred while marking item as complete.");
+
+
+
+</script>
+<script>
+    $(document).ready(function() {
+        $(".complete-btn").on("click", function() {
+            var itemId = $(this).data("item-id");
+            console.log("Item ID:", itemId); // Add console log to check itemId
+            $.ajax({
+                url: "{% url 'mark_as_complete' %}",
+                type: "POST",
+                data: {
+                    item_id: itemId,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function(response) {
+                    console.log("Response:", response); // Add console log to check response
+                    if (response.success) {
+                        // Remove the item from the DOM
+                        $("li[data-item-id='" + itemId + "']").remove();
+                        window.location.reload(true)
+                    } else {
+                        alert("Failed to mark item as complete.");
                     }
-                });
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("Error occurred while marking item as complete.");
+                }
             });
         });
-    </script>
+    });
+</script>
+
+
+
+    
     
     
 </body>

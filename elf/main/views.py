@@ -28,7 +28,7 @@ def students_login(request):
         student = Student.objects.get(enrolment_no=enrolment_no)
         user = student.name
         if student.password == password:
-            return redirect('user_home')
+            return redirect('suser_home')
         
     return render(request, 'students_login.html')
 
