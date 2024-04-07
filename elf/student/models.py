@@ -36,10 +36,10 @@ class Found_Item(models.Model):
 
 
 class Lost_Item(models.Model):
-    status = {
-        'recieved': 'recieved',
-        'not_recieved': 'not_recieved'
-    }
+    status = (
+        ('not_received', 'Not Received'),
+        ('received', 'Received'),
+    )
     name = models.CharField(max_length=100)
     enrollment_no = models.CharField(max_length=100)
     phone_no = models.CharField(max_length=10)

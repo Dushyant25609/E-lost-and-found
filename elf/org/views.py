@@ -32,7 +32,7 @@ def not_found_items(request):
         not_found_items = Lost_Item.objects.filter(item_name__icontains=query) | Lost_Item.objects.filter(item_description__icontains=query)
     else:
         not_found_items = Lost_Item.objects.all()
-    return render(request, 'organization_not_found_items.html', {'not_found_items': not_found_items, 'query': query})
+    return render(request, 'listLost.html', {'not_found_items': not_found_items, 'query': query})
 
 def search_items(request):
     query = request.GET.get('query')
@@ -71,4 +71,6 @@ def mark_as_complete(request):
 
 def completed_items(request):
     completed_items = Lost_Item.objects.filter(completed=True)  # Change status based on your implementation
-    return render(request, 'completed_items.html', {'completed_items': completed_items})
+    return render(request, 'listFound.html', {'completed_items': completed_items})
+
+

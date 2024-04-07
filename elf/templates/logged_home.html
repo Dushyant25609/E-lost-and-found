@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LostSpot - Home</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'static/css/home.css' %}"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}"><img src="/static/images/logo.png" alt="Logo Lost Spot"/></a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'about' %}">Contact Us</a></li>
+            </ul>
+            <div class="menu-icon">
+                <img src="/static/images/menu-icon.png" alt="Menu">
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1><span class="lost">Lost</span><span class="spot">Spot</span></h1>
+            <p>Enhancing lost and found</p>
+           
+            <a href="{% url 'lost'%}" class="btn">Lost something</a>
+            <a href="{% url 'found' %}" class="btn2">Found something</a>
+        </section>
+        <section class="features">
+            <h2>HOW IT WORKS</h2>
+            <div class="fSec">
+                <div class="feature">
+                    <div class="number">01</div>
+                    <h3>LOGIN TO YOUR ACCOUNT</h3>
+                    <p>To submit a listing, create an account on our portal and login to your account</p>
+                </div>
+                <div class="feature">
+                    <div class="number">02</div>
+                    <h3>CREATE A LISTING</h3>
+                    <p>Create a listing for the item, and submit all the details</p>
+                </div>
+                <div class="feature">
+                    <div class="number">03</div>
+                    <h3>WAIT FOR THE MAGIC</h3>
+                    <p>The listing will be live and can be viewed by all members of the organisation</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 LostSpot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navList = document.querySelector('header nav ul');
+
+    menuIcon.addEventListener('click', function() {
+        navList.classList.toggle('open');
+    });
+});
+
+    </script>
+</body>
+</html>

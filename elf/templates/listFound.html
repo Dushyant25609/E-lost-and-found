@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found Items Listings</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'static/css/list.css' %}">
+</head>
+<body>
+    <h1>Returned Items Listings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment No</th>
+                <th>Phone No</th>
+                <th>Item Name</th>
+                <th>Item Description</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if completed_items %}
+            {% for item in completed_items %}
+            {% if item.imageURL %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.enrollment_no }}</td>
+                <td>{{ item.phone_no }}</td>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.item_description }}</td>
+                <td><img src="{{ item.image.url }}" alt="{{ item.item_name }}" style="max-width: 100px;"></td>
+                <td>{{ item.location }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{item.completed }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

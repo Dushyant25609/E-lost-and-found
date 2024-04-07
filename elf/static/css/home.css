@@ -145,8 +145,9 @@ nav ul li a.btn {
 }
 
 .features h2 {
-    font-size: 24px; /* Adjusted font size */
-    color: white; /* Text color */
+    font-size: 36px; /* Adjusted font size */
+    color: #2059D4;
+    font-weight: 700;
 }
 
 .fSec {

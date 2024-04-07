@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static '/static/css/aboutUs.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/aboutUs.css'%}">
     <!-- Add your CSS link here if you have any -->
 </head>
 <body>
     <header>
-        <img src="{% static 'images/logo.png' %}" alt="Logo Lost Spot"/>
+        <a href="{% url 'home' %}"><img src="/static/images/logo.png" alt="Logo Lost Spot"/></a>
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Log In</a></li>
-                <li><a href="#">Sign In</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a href="{% url 'student_login' %}">Log In</a></li>
+                <li><a href="{% url 'student_signup' %}">Sign In</a></li>
+                <li><a href="{% url 'organization_login' %}">Org</a></li>
             </ul>
             <div class="menu-icon">
-                <img src="{% static 'images/menu-icon.png' %}" alt="Menu">
+                <img src="/static/images/menu-icon.png" alt="Menu">
             </div>
         </nav>
     </header>
@@ -104,6 +105,15 @@
     
         window.addEventListener('scroll', checkScroll);
         checkScroll(); // Call checkScroll once to initialize section visibility
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navList = document.querySelector('header nav ul');
+
+    menuIcon.addEventListener('click', function() {
+        navList.classList.toggle('open');
+    });
+});
     </script>
 </body>
 </html>

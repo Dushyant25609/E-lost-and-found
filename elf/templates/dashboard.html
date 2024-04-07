@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items Listings</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static/css/list.css' %}">
+</head>
+<body>
+    <h1>Items Listings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment No</th>
+                <th>Phone No</th>
+                <th>Item Name</th>
+                <th>Item Description</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in match_items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.enrol }}</td>
+                <td>{{ item.phone }}</td>
+                <td>{{ item.item }}</td>
+                <td>{{ item.des }}</td>
+                <td><img src="{{ item.img }}" alt="{{ item.item }}" style="max-width: 100px;"></td>
+                <td>{{ item.loc }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

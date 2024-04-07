@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+    font-family: "Nunito", sans-serif; /* Change default font family */
+    background-color: #292929; /* Body background color */
+    color: white; /* Text color */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px; /* Adjusted margin top */
+    margin-bottom: 30px; /* Adjusted margin bottom */
+    color: #2059D4;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjusted margin top */
+}
+
+thead th {
+    background-color: #333; /* Header background color */
+    color: white; /* Header text color */
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #444; /* Odd row background color */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #555; /* Even row background color */
+}
+
+tbody td {
+    padding: 10px;
+}
+
+tbody td img {
+    max-width: 100px;
+    max-height: 100px; /* Limit image height */
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: auto; /* Center the image horizontally */
+}
+
+/* Add styles for footer */
+footer {
+    background-color: #ddd;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}

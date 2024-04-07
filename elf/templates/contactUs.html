@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LostSpot - Contact Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static/css/contactUs.css' %}"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}"><img src="/static/images/logo.png" alt="Logo Lost Spot"/></a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a href="{% url 'student_login' %}">Log In</a></li>
+                <li><a href="{% url 'student_signup' %}">Sign In</a></li>
+                <li><a href="{% url 'organization_login' %}">Org</a></li>
+            </ul>
+            <div class="menu-icon">
+                <img src="/static/images/menu-icon.png" alt="Menu">
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1><span class="lost">Let's</span><span class="spot">Talk</span></h1>
+            </section>
+        <section class="contact-section">
+            <div class="contact">
+                <div class="left">
+                    <form action="#" method="POST">
+                        <label for="name">What's your Name?</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">What email address can we reach you at?</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="phone">What Phone number can we reach you at?</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="message">How can we help? Write us a message</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <button type="submit">Send to Us</button>
+                    </form>
+                </div>
+                <div class="right">
+                    <div class="gph">
+                        <img src="/static/images/woman.png" alt="Graphic Placeholder">
+                    </div>
+                    <div class="contacts">
+                        <p>Address: Your Address</p>
+                        <p>Email: contact@lostspot.com</p>
+                        <p>Contact Number: +1 123 456 7890</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LostSpot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navList = document.querySelector('header nav ul');
+
+            menuIcon.addEventListener('click', function() {
+                navList.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
