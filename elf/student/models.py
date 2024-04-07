@@ -1,5 +1,6 @@
 from django.db import models
 import os
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -35,6 +36,7 @@ class Found_Item(models.Model):
 
 
 class Lost_Item(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     status = {
         'recieved': 'recieved',
         'not_recieved': 'not_recieved'

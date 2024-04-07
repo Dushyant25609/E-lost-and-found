@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Lost_Item, Found_Item
 from .forms import FoundItemForm, LostItemForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -40,3 +41,8 @@ def found(request):
     
     context = {'found_form': found_form}
     return render(request, 'found.html', context)
+
+@login_required
+def user_requested_items(request):
+    requested_items = Lost_Item.objects.filter(user=request.user)
+    return render(request, 'user_requested_items.html', {'requested_items': requested_items})
