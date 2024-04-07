@@ -23,6 +23,7 @@ class Found_Item(models.Model):
     location = models.TextField(max_length=100)
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_submitted')
+    completed = models.BooleanField(default=False)
 
     @property
     def imageURL(self):
@@ -47,6 +48,7 @@ class Lost_Item(models.Model):
     location = models.TextField(max_length=100)
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_recieved')
+    completed = models.BooleanField(default=False)
 
     @property
     def imageURL(self):

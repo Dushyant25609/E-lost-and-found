@@ -1,46 +1,108 @@
-<!-- organization_not_found_items.html -->
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organization Not Found Items</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h2>Items Not Yet Found (Lost)</h2>
     
     <!-- Search form -->
-    <form action="{% url 'not_found_items' %}" method="GET">
+    <form id="search-form" method="GET">
         <input type="text" name="query" placeholder="Search for items..." value="{{ query }}">
         <button type="submit">Search</button>
     </form>
 
-    <ul>
+    <!-- Display error message if exists -->
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+    <ul id="item-list">
     {% if not_found_items %}
         {% for item in not_found_items %}
-            <li>
-                {% if item.imageURL %}
-                    <img src="{{ item.imageURL }}" alt="">
-                {% else %}
-                    <p>No image available</p>
-                {% endif %}
-                <p>Name: {{ item.name }}</p>
-                <p>Enrollment No: {{ item.enrollment_no }}</p>
-                <p>Phone No: {{ item.phone_no }}</p>
-                <p>Item Name: {{ item.item_name }}</p>
-                <p>Item Description: {{ item.item_description }}</p>
-                <p>Location: {{ item.location }}</p>
-                <p>Date: {{ item.date }}</p>
-                <form action="{% url 'toggle_status' item.id %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="new_status" value="{% if item.status == 'received' %}not_received{% else %}received{% endif %}">
-                    <button type="submit">Toggle Status</button>
-                </form>
-            </li>
+            {% if not item.completed %}
+                <li>
+                    {% if item.imageURL %}
+                        <img src="{{ item.imageURL }}" alt="">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <p>Name: {{ item.name }}</p>
+                    <p>Enrollment No: {{ item.enrollment_no }}</p>
+                    <p>Phone No: {{ item.phone_no }}</p>
+                    <p>Item Name: {{ item.item_name }}</p>
+                    <p>Item Description: {{ item.item_description }}</p>
+                    <p>Location: {{ item.location }}</p>
+                    <p>Date: {{ item.date }}</p>
+                    <p>Status : {{ item.status }}</p>
+                    {% if item.status != 'received' %}
+                        <form class="status-toggle-form" action="{% url 'toggle_status' item.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="new_status" value="{% if item.status == 'received' %}not_received{% else %}received{% endif %}">
+                            <button type="submit" class="status-toggle-btn">
+                                {% if item.status == 'received' %}
+                                    Toggle Status (Received)
+                                {% else %}
+                                    Toggle Status (Not Received)
+                                {% endif %}
+                            </button>
+                        </form>
+                    {% endif %}
+                    <button class="complete-btn" data-item-id="{{ item.id }}">Mark as Complete</button>
+                </li>
+            {% endif %}
         {% endfor %}
     {% else %}
         <p>No items found.</p>
     {% endif %}
     </ul>
+
+    <script>
+        let toggle = document.getElementById('toggle');
+        var flag = false;
+
+        function toggle_status(){
+            if(flag == false){
+                flag == true
+            }
+        }
+
+        
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".complete-btn").on("click", function() {
+                var itemId = $(this).data("item-id");
+                console.log("Item ID:", itemId); // Add console log to check itemId
+                $.ajax({
+                    url: "{% url 'mark_as_complete' %}",
+                    type: "POST",
+                    data: {
+                        item_id: itemId,
+                        csrfmiddlewaretoken: "{{ csrf_token }}"
+                    },
+                    success: function(response) {
+                        console.log("Response:", response); // Add console log to check response
+                        if (response.success) {
+                            // Remove the item from the DOM
+                            $("li[data-item-id='" + itemId + "']").remove();
+                            window.location.reload(true);
+                        } else {
+                            alert("Failed to mark item as complete.");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert("Error occurred while marking item as complete.");
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
 </body>
 </html>
