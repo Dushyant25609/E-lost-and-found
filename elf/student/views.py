@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Lost_Item, Found_Item
 from .forms import FoundItemForm, LostItemForm
-from django.contrib.auth.decorators import login_required
-from .match import query
-from .score import score_calculator
 
 # Create your views here.
 
@@ -103,10 +100,5 @@ def found(request):
     else:
         found_form = FoundItemForm()  # Instantiate FoundItemForm
     
-    context = {'found_form': found_form}
+    context = {'found_form': found_form,}
     return render(request, 'found.html', context)
-
-@login_required
-def user_requested_items(request):
-    requested_items = Lost_Item.objects.filter(user=request.user)
-    return render(request, 'user_requested_items.html', {'requested_items': requested_items})

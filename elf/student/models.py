@@ -36,7 +36,6 @@ class Found_Item(models.Model):
 
 
 class Lost_Item(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     status = {
         'recieved': 'recieved',
         'not_recieved': 'not_recieved'
