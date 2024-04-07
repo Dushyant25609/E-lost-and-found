@@ -1,5 +1,6 @@
 from django.db import models
 import os
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -23,6 +24,7 @@ class Found_Item(models.Model):
     location = models.TextField(max_length=100)
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_submitted')
+    completed = models.BooleanField(default=False)
 
     @property
     def imageURL(self):
@@ -34,10 +36,10 @@ class Found_Item(models.Model):
 
 
 class Lost_Item(models.Model):
-    status = (
-        ('not_received', 'Not Received'),
-        ('received', 'Received'),
-    )
+    status = {
+        'recieved': 'recieved',
+        'not_recieved': 'not_recieved'
+    }
     name = models.CharField(max_length=100)
     enrollment_no = models.CharField(max_length=100)
     phone_no = models.CharField(max_length=10)
@@ -47,6 +49,7 @@ class Lost_Item(models.Model):
     location = models.TextField(max_length=100)
     date = models.CharField(max_length=50)
     status = models.CharField(max_length=100, choices=status, default='not_recieved')
+    completed = models.BooleanField(default=False)
 
     @property
     def imageURL(self):

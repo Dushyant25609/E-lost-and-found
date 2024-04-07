@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Lost_Item, Found_Item
 from .forms import FoundItemForm, LostItemForm
-from .match import query
-from .score import score_calculator
 
 # Create your views here.
 
@@ -104,6 +102,3 @@ def found(request):
     
     context = {'found_form': found_form,}
     return render(request, 'found.html', context)
-
-def about(request):
-    return render(request, 'aboutUs.html')
