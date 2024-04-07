@@ -1,0 +1,28 @@
+<!-- completed_items.html -->
+{% block content %}
+<h2>Completed Items</h2>
+{% if completed_items %}
+    <ul>
+        {% for item in completed_items %}
+            <li>
+                {% if item.imageURL %}
+                    <img src="{{ item.imageURL }}" alt="">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <p>Name: {{ item.name }}</p>
+                <p>Enrollment No: {{ item.enrollment_no }}</p>
+                <p>Phone No: {{ item.phone_no }}</p>
+                <p>Item Name: {{ item.item_name }}</p>
+                <p>Item Description: {{ item.item_description }}</p>
+                <p>Location: {{ item.location }}</p>
+                <p>Date: {{ item.date }}</p>
+                <!-- <p>Status : {{ item.status }}</p> -->
+                <p>Completed : {{item.completed }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No completed items found.</p>
+{% endif %}
+{% endblock %}

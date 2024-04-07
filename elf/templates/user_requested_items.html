@@ -1,0 +1,17 @@
+<!-- user_requested_items.html -->
+{% block content %}
+<h2>Your Requested Items</h2>
+{% if requested_items %}
+    <ul>
+        {% for item in requested_items %}
+            <li>
+                <p>Name: {{ item.name }}</p>
+                <p>Enrollment No: {{ item.enrollment_no }}</p>
+                <!-- Add other fields as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No requested items found.</p>
+{% endif %}
+{% endblock %}
