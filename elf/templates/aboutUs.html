@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/static/css/aboutUs.css' %}">
+    <!-- Add your CSS link here if you have any -->
+</head>
+<body>
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo Lost Spot"/>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+            <div class="menu-icon">
+                <img src="{% static 'images/menu-icon.png' %}" alt="Menu">
+            </div>
+        </nav>
+    </header>
+    
+    <section id="problems">
+        <h2>Challenges We Address</h2>
+        <p>LostSpot was born out of the need to tackle several key challenges:</p>
+        <ul>
+            <li><strong>Productivity Loss:</strong> Traditional lost and found processes often lead to stress and productivity loss among individuals and organizations.</li>
+            <li><strong>Inefficiency:</strong> Existing methods for managing lost and found items are often inefficient and time-consuming.</li>
+            <li><strong>Unclaimed Items:</strong> A lack of a reliable system results in items remaining lost or unclaimed for extended periods, causing frustration for both owners and finders.</li>
+        </ul>
+    </section>
+    
+    <section id="solutions">
+        <h2>Our Innovative Solutions</h2>
+        <p>At LostSpot, we offer cutting-edge solutions to revolutionize the lost and found experience:</p>
+        <ul>
+            <li><strong>Smart Technology:</strong> Leveraging AI-powered item identification for accurate matching and streamlined submission processes.</li>
+            <li><strong>Efficient Matching:</strong> Automatic matching of lost and found items based on AI-generated descriptions, ensuring convenience.</li>
+            <li><strong>Seamless Retrieval:</strong> Direct notification to users when their lost items are found, facilitating hassle-free reclaiming.</li>
+        </ul>
+    </section>
+    
+    <section id="how-it-works">
+        <h2>How LostSpot Works</h2>
+        <p>Our platform simplifies the lost and found process into three easy steps:</p>
+        <ol>
+            <li><strong>Report Lost Item:</strong> Users report a lost item by uploading a picture and relevant details.</li>
+            <li><strong>AI Analysis:</strong> LostSpot's AI analyzes the image and generates a detailed description of the item.</li>
+            <li><strong>Match and Notify:</strong> When another user finds the item and submits it, LostSpot's system matches the found item with the lost item based on descriptions and notifies the owner for easy retrieval.</li>
+        </ol>
+    </section>
+    
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>LostSpot is committed to transforming the lost and found experience by offering a sophisticated yet user-friendly platform. Our goal is to provide convenience and efficiency to our users while ensuring lost items have a higher chance of being returned to their owners.</p>
+        <p>We invite you to experience the convenience of LostSpot firsthand. Join us in simplifying the lost and found process and making a positive impact on productivity and peace of mind.</p>
+    </section>
+    <script>
+        // JavaScript for fade-in and fade-out effect on scroll
+        const sections = document.querySelectorAll('section');
+    
+        function checkScroll() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                const sectionVisible = sectionTop < windowHeight * 0.75;
+    
+                if (sectionVisible) {
+                    fadeIn(section);
+                } else {
+                    fadeOut(section);
+                }
+            });
+        }
+    
+        function fadeIn(element) {
+            let opacity = 0;
+            const intervalId = setInterval(() => {
+                opacity += 0.1;
+                if (opacity >= 1) {
+                    clearInterval(intervalId);
+                    opacity = 1;
+                }
+                element.style.opacity = opacity;
+            }, 50);
+        }
+    
+        function fadeOut(element) {
+            let opacity = 1;
+            const intervalId = setInterval(() => {
+                opacity -= 0.1;
+                if (opacity <= 0) {
+                    clearInterval(intervalId);
+                    opacity = 0;
+                }
+                element.style.opacity = opacity;
+            }, 50);
+        }
+    
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Call checkScroll once to initialize section visibility
+    </script>
+</body>
+</html>

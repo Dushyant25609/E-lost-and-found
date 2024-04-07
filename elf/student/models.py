@@ -11,10 +11,10 @@ def found_item_image_path(instance, filename):
     return os.path.join('found_images', filename)
 
 class Found_Item(models.Model):
-    status = {
-        'submitted': 'submitted',
-        'not_submitted': 'not_submitted'
-    }
+    status = (
+        ('not_received', 'Not Received'),
+        ('received', 'Received'),
+    )
     name = models.CharField(max_length=100, blank=True)
     enrollment_no = models.CharField(max_length=100)
     phone_no = models.CharField(max_length=10, blank=True)
