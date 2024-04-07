@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+    font-family: "Nunito", sans-serif;
+    background-color: #292929;
+    color: white;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #4D82F4; /* Match the "LostSpot" color */
+}
+
+form {
+    background-color: #232323; /* Match the header background color */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Match the header box-shadow */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    color: #B0B0B0; /* Match the color of other text */
+}
+
+input[type="text"],
+input[type="tel"],
+textarea,
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #4D82F4; /* Match the color of links in the "home.html" page */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #232323; /* Match the form background color */
+    color: white;
+}
+
+input[type="submit"] {
+    background-color: #3884FD; /* Match the button background color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1d5bbf; /* Match the button hover color */
+}
+
+.errors {
+    background-color: #B0B0B0; /* Match the color of the "Lost" text */
+    color: #4D82F4; /* Match the color of the "Spot" text */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.errors ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.errors li {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,21 @@
+<!-- student_signup.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisation login</title>
+</head>
+<body>
+    <h2>Organisation login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Log In</button>
+    </form>
+</body>
+</html>

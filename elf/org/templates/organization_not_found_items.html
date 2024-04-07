@@ -1,0 +1,8 @@
+<!-- organization_not_found_items.html -->
+{% load static %}
+<h2>Items Not Yet Found (Lost)</h2>
+<ul>
+{% for item in not_found_items %}
+    <li><img src="{{ item.imageURL }}" alt=""></li>
+{% endfor %}
+</ul>
