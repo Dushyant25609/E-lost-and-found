@@ -98,61 +98,48 @@ def contact(request):
     return render(request, 'contactUs.html')
 
 def student_dashboard(request):
+    name = enrol = phone = item_name = loc = des = date = img = status = ''
     data = request.GET.get('data')
     points = []
     match_items = []
-    print(data)
-
-    
+    print("Received data:", data)
 
     if data:
         float_points = list(map(float, data.split(',')))
+        print("Float points:", float_points)
     match_id = max_index(float_points)
-    
+    print("Match ID:", match_id)
 
     all_items = Found_Item.objects.all()
     all_item_ids = [item.id for item in all_items]
 
-    if len(points) >= 5:
-        indexed_numbers = list(enumerate(points))
-        sorted_numbers = sorted(indexed_numbers, key=lambda x: x[1], reverse=True)
-        top_5_indices = [index for index, _ in sorted_numbers[:5]]  
-        print(top_5_indices)
-
-        if top_5_indices is not None:
-            
-            matched_item = Found_Item.objects.get(id=all_item_ids[match_id])
-            match_items.append({
-                'name': matched_item.name,
-                'enrol': matched_item.enrollment_no,
-                'phone': matched_item.phone_no,
-                'item': matched_item.item_name,
-                'des': matched_item.item_description,
-                'loc': matched_item.location,
-                'date': matched_item.date,
-                'status': matched_item.status,
-                'img': matched_item.imageURL
-            })
-    else:
-        if points is not None:
-            for i in points:
-                matched_item = Found_Item.objects.get(id=all_item_ids[i])
-                match_items.append({
-                    'name': matched_item.name,
-                    'enrol': matched_item.enrollment_no,
-                    'phone': matched_item.phone_no,
-                    'item': matched_item.item_name,
-                    'des': matched_item.item_description,
-                    'loc': matched_item.location,
-                    'date': matched_item.date,
-                    'status': matched_item.status,
-                    'img': matched_item.imageURL
-                })
+    if match_id is not None:
+        matched_item_id = all_item_ids[match_id]
+        matched_item = Found_Item.objects.get(id=matched_item_id)
+        name = matched_item.name
+        enrol = matched_item.enrollment_no
+        phone = matched_item.phone_no
+        item_name = matched_item.item_name
+        des = matched_item.item_description
+        loc = matched_item.location
+        date = matched_item.date
+        img = matched_item.imageURL
+        status = matched_item.status
 
     context = {
         'points': points,
-        'match_items': match_items,
+        'name': name,
+        'enrol': enrol,
+        'phone': phone,
+        'item_name': item_name,
+        'des': des,
+        'loc': loc,
+        'date': date,
+        'img': img,
+        'status': status
     }
+
+    print("Context:", context)
     return render(request, 'dashboard.html', context)
 
 
