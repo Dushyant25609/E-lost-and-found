@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Found Items Listings</title>
     {% load static %}
-    <link rel="stylesheet" href="{%static 'static/css/list.css' %}">
+    <link rel="stylesheet" href="{% static '/static/css/list.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Returned Items Listings</h1>
+    <h1>Found Items Listings</h1>
     <table>
         <thead>
             <tr>
@@ -21,11 +22,13 @@
                 <th>Location</th>
                 <th>Date</th>
                 <th>Status</th>
+                <th>Change</th>
             </tr>
         </thead>
         <tbody>
-            {% if completed_items %}
-            {% for item in completed_items %}
+            {% if not_received_items %}
+            {% for item in not_received_items %}
+            {% if not item.completed %}
             {% if item.imageURL %}
             <tr>
                 <td>{{ item.name }}</td>
@@ -33,15 +36,77 @@
                 <td>{{ item.phone_no }}</td>
                 <td>{{ item.item_name }}</td>
                 <td>{{ item.item_description }}</td>
-                <td><img src="{{ item.image.url }}" alt="{{ item.item_name }}" style="max-width: 100px;"></td>
+                <td><img src="{{ item.imageURL }}" alt="{{ item.item_name }}" style="max-width: 100px;"></td>
                 <td>{{ item.location }}</td>
                 <td>{{ item.date }}</td>
-                <td>{{item.completed }}</td>
+                <td>
+                    {% if item.status != 'received' %}
+                        <form class="status-toggle-form" action="{% url 'found_toggle_status' item.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="new_status" value="{% if item.status == 'received' %}not_received{% else %}received{% endif %}">
+                            <button type="submit" class="status-toggle-btn">
+                                {% if item.status == 'received' %}
+                                    Toggle Status (Received)
+                                {% else %}
+                                    Toggle Status (Not Received)
+                                {% endif %}
+                            </button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td><button class="complete-btn" data-item-id="{{ item.id }}">Mark as Complete</button></td>
             </tr>
+            {% endif %}
             {% endif %}
             {% endfor %}
             {% endif %}
         </tbody>
     </table>
+    <script>
+        let toggle = document.getElementById('toggle');
+        var flag = false;
+
+        function toggle_status(){
+            if(flag == false){
+                flag == true
+            }
+        }
+
+        
+    </script>
+    <script>
+        // No need for the toggle_status function as it's not being used
+        $(document).ready(function() {
+    $(".complete-btn").on("click", function() {
+        var itemId = $(this).data("item-id");
+        console.log("Item ID:", itemId); // Add console log to check itemId
+        $.ajax({
+            url: "{% url 'mark_as_complete' %}",
+            type: "POST",
+            data: {
+                item_id: itemId,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function(response) {
+                console.log("Response:", response); // Add console log to check response
+                if (response.success) {
+                    // Remove the item from the DOM
+                    $("tr[data-item-id='" + itemId + "']").remove(); // Fix the selector here
+                    window.location.reload(true);
+                } else {
+                    alert("Failed to mark item as complete.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert("Error occurred while marking item as complete.");
+            }
+        });
+    });
+});
+
+    </script>
+    
+    
 </body>
 </html>

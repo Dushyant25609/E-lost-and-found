@@ -41,7 +41,7 @@
                 <td>{{ item.date }}</td>
                 <td>
                     {% if item.status != 'received' %}
-                        <form class="status-toggle-form" action="{% url 'toggle_status' item.id %}" method="post">
+                        <form class="status-toggle-form" action="{% url 'lost_toggle_status' item.id %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="new_status" value="{% if item.status == 'received' %}not_received{% else %}received{% endif %}">
                             <button type="submit" class="status-toggle-btn">

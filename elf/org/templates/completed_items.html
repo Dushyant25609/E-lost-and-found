@@ -1,4 +1,32 @@
-<!-- completed_items.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Items Listings</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/static/css/list.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Completed Items Listings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Enrollment No</th>
+                <th>Phone No</th>
+                <th>Item Name</th>
+                <th>Item Description</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- completed_items.html -->
 {% block content %}
 <h2>Completed Items</h2>
 {% if completed_items %}
@@ -26,3 +54,10 @@
     <p>No completed items found.</p>
 {% endif %}
 {% endblock %}
+        </tbody>
+    </table>
+
+    
+    
+</body>
+</html>

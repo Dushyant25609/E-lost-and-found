@@ -15,7 +15,6 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'about' %}">Contact Us</a></li>
-                <li><a href="{% url 'not_found_items' %}">Lost Items</a></li>
                 <li><a href="{% url 'completed_items' %}">Completed items</a></li>
 
             </ul>
@@ -30,8 +29,8 @@
             <h1><span class="lost">Lost</span><span class="spot">Spot</span></h1>
             <p>Enhancing lost and found</p>
            
-            <a href="{% url 'lost'%}" class="btn">Lost something</a>
-            <a href="{% url 'found' %}" class="btn2">Found something</a>
+            <a href="{% url 'not_found_items'%}" class="btn">Lost Items</a>
+            <a href="{% url 'not_received_items'%}" class="btn">Found Items</a>
         </section>
         <section class="features">
             <h2>HOW IT WORKS</h2>

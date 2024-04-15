@@ -164,9 +164,12 @@ def student_dashboard(request):
         points.append(score_calculator(name_out[i], des_out[i], loc_out[i], img_out[i])) 
 
     match_id_2 = max_index_2(points)
-    
-    
+
+    match_index = []
     for i in match_id_2:
+        match_index.append(all_item_ids[i])
+    
+    for i in match_index:
         try:
             item = Found_Item.objects.get(id=i)
             matched_items.append(item)

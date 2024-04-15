@@ -14,5 +14,5 @@ def clean_query(payload):
 
 
 def prompt(Ques):
-    prompt = f"Just give the main key description of the main item in the given input like what is the item, ites color and model and just give the neccessary details and dont give the location or position of the item in one line.{Ques}\n\n"
+    prompt = f"Just give only the main key description of the main item in the given input like what is the item, its color and model and just give the neccessary details and dont give the location or position of the item briefly in one line only contain the description.{Ques}\n\n"
     return prompt
