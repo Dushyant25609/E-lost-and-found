@@ -24,17 +24,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{ name }}</td>
-                <td>{{ enrol }}</td>
-                <td>{{ phone }}</td>
-                <td>{{ item_name }}</td>
-                <td>{{ des }}</td>
-                <td><img src="{{ img }}" alt="{{ item.item }}" style="max-width: 100px;"></td>
-                <td>{{ loc }}</td>
-                <td>{{ date }}</td>
-                <td>{{ status }}</td>
-            </tr>
+            {% for item in matched_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.enrollment_no }}</td>
+                    <td>{{ item.phone_no }}</td>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.item_description }}</td>
+                    <td><img src="{{ item.imageURL }}" alt="{{ item.item_name }}" style="max-width: 100px;"></td>
+                    <td>{{ item.location }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>

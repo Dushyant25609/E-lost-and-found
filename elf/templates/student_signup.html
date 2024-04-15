@@ -14,15 +14,15 @@
     <form method="post">
         {% csrf_token %}
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" autocomplete="off" id="name" name="name" required>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" autocomplete="off" id="email" name="email" required>
         <label for="enrolment_no">Enrolment No:</label>
-        <input type="text" id="enrolment_no" name="enrolment_no" required>
+        <input type="text" autocomplete="off" id="enrolment_no" name="enrolment_no" required>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" autocomplete="off" id="password" name="password" required>
         <label for="password2">Confirm Password:</label>
-        <input type="password" id="password2" name="password2" required>
+        <input type="password" autocomplete="off" id="password2" name="password2" required>
         <button type="submit">Sign Up</button>
     </form>
 </body>

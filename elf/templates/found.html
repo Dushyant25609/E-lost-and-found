@@ -10,31 +10,31 @@
 <body>
     <h2>Found Form</h2>
 
-    <form action="{% url 'found' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'found_form' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="found_name">Name:</label><br>
-        <input type="text" id="found_name" name="name" required><br>
+        <input type="text" id="found_name" autocomplete="off" name="name" required><br>
 
         <label for="found_enrollment_no">Enrollment No:</label><br>
-        <input type="text" id="found_enrollment_no" name="enrollment_no" required><br>
+        <input type="text" id="found_enrollment_no" autocomplete="off" name="enrollment_no" required><br>
 
         <label for="found_phone_no">Phone No:</label><br>
-        <input type="tel" id="found_phone_no" name="phone_no" pattern="[0-9]{10}" required><br>
+        <input type="tel" id="found_phone_no" name="phone_no" autocomplete="off" pattern="[0-9]{10}" required><br>
 
         <label for="found_item_name">Item Name:</label><br>
-        <input type="text" id="found_item_name" name="item_name" required><br>
+        <input type="text" id="found_item_name" name="item_name" autocomplete="off" required><br>
 
         <label for="found_item_description">Item Description:</label><br>
-        <textarea id="found_item_description" name="item_description" rows="4" cols="50" required></textarea><br>
+        <textarea id="found_item_description" name="item_description" autocomplete="off" rows="4" cols="50" required></textarea><br>
 
         <label for="found_item_image">Item Image:</label><br>
-        <input type="file" id="found_item_image" name="image" accept="image/*" required><br>
+        <input type="file" id="found_item_image" name="image" autocomplete="off" accept="image/*" required><br>
 
         <label for="found_location">Location:</label><br>
-        <input type="text" id="found_location" name="location" required><br>
+        <input type="text" id="found_location" name="location" autocomplete="off" required><br>
 
         <label for="found_date">Date:</label><br>
-        <input type="date" id="found_date" name="date" required><br>
+        <input type="date" id="found_date" name="date" autocomplete="off" required><br>
 
         <input type="submit" value="Submit">
     </form>

@@ -4,23 +4,6 @@ from student.forms import FoundItemForm
 from student.models import Found_Item, Lost_Item
 from django.shortcuts import HttpResponse
 
-def found(request):
-    if request.method == 'POST':
-        found_form = FoundItemForm(request.POST, request.FILES)
-        if found_form.is_valid():
-            found_item = found_form.save(commit=False)
-            found_item.status = 'not_received'  # Use consistent status name
-            found_item.save()
-            return redirect('home')
-        else:
-            print(found_form.errors)
-            # Handle form errors appropriately, maybe return an error response
-            return JsonResponse({'error': 'Form validation failed'}, status=400)
-    else:
-        found_form = FoundItemForm()
-    
-    context = {'found_form': found_form}
-    return render(request, 'found.html', context)
 
 def not_received_items(request):
     not_received_items = Found_Item.objects.filter(status='not_received')  # Use consistent status name
