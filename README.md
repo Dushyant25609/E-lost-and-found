@@ -8,6 +8,7 @@
   - [For Windows](#for-windows)
   - [For macOS](#for-macos)
 - [Contribution Guidelines](#contribution-guidelines)
+- [Organisation Log in Information](#organisation-log-in-information)
 - [Contact](#contact)
 
 ## Introduction
@@ -72,6 +73,12 @@ Contributions to the E-lost-and-found project are welcome! To contribute, follow
    git push origin feature-branch
    ```
 5. Open a pull request against the main repository's main branch.
+
+## Organisation Log in Information
+
+To log in as the organization, please use the following credentials:
+1. Email = bennett@bennett.edu.in
+2. Password = bennett
 
 ## Contact
 For inquiries or support, please contact honey25609@gmail.com.
